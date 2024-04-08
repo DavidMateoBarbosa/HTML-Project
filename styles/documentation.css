@@ -1,0 +1,40 @@
+/* head */
+.rounded-image {
+    border-radius: 50%;
+}
+
+/* content */
+body {
+    font-family: Arial, serif;
+}
+
+.nav-link.active {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.title {
+    justify-content: left;
+}
+.title h1 {
+    font-weight: bold;
+}
+.title p {
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+    wrap-option: true;
+}
+
+.code-box {
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 6px;
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre-wrap;
+}
+
+
+footer {
+    background: darkgray;
+}

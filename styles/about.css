@@ -1,0 +1,56 @@
+/* head */
+.rounded-image {
+    border-radius: 50%;
+}
+
+/* content */
+body {
+    font-family: Arial, serif;
+}
+
+.nav-link.active {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.title {
+    justify-content: left;
+}
+.title h1 {
+    font-weight: bold;
+}
+.title p {
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+    wrap-option: true;
+}
+.logo {
+    height: 3em; /* Set the height equal to the font size of the h1 */
+    width: auto; /* Let the browser calculate the width based on the aspect ratio of the image */
+    margin-right: 1em; /* Add some spacing between the image and the text */
+    border-radius: 10px;
+}
+
+.introduction {
+    background-color: lightgray;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+    wrap-option: true;
+}
+.introduction p {
+    margin-bottom: 15px;
+}
+
+h5 {
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+    wrap-option: true;
+
+}
+
+footer {
+    background: darkgray;
+}

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles/documentation.css">
+    <link class="rounded-image" rel="icon" type="image/png" href="../sources/logo.png">
+    <title>Zephyrus | Documentation</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="about.html">Zephyrus</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="documentation.html">Documentation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container mt-5">
+    <div class="title">
+        <h1>Documentation</h1>
+        <p>
+            In this section, you'll find comprehensive guidance and valuable resources to help you navigate through
+            the documentation.
+        </p>
+        <hr>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <h2>1. Hello World</h2>
+            <pre class="code-box"><code>
+    // if the compiler receives the parameter '--functional'
+    int main() {
+        print('Hello, World!');
+        return 0;
+    }
+    // Otherwise
+    print('Hello, World!');
+            </code></pre>
+        </div>
+        <div class="col-md-6">
+            <h2>2. Basic Types</h2>
+            <p>Zephyrus have a lot of keywords but for this we are only use the primitive types</p>
+            <p>void, bool, signed, unsigned, bstr, byte, short, int, long, float, double, complex</p>
+            <pre class="code-box"><code>
+    // 'void'
+    // Only for callable contexts
+
+    // 'bool'
+    // The basic boolean type, comes with its literals 'true' and 'false'
+    bool empty = false;
+
+    // 'byte'
+    // 8-byte-sized integer (may be changed to 'char' in the release)
+    byte int8 = 10;
+
+    // 'short' or 'short int'
+    // 16-byte-sized integer
+    short int16 = 100;
+
+    // 'int', 'long' or 'long int'
+    // 32-byte-sized integer
+    int int32 = 1000;
+
+    // 'long long' or 'long long int'
+    // 64-byte-sized integer if the system allows, otherwise same as 'int'
+    long long int64 = 10000;
+
+    // 'float'
+    // 32-byte-sized floating-point number
+    float float32 = 1.0;
+
+    // 'double' ('long float' is allowed but warns)
+    // 64-byte-sized floating-point number
+    double float32 = 1.0;
+
+    // 'long double' ('long long float' raises an error)
+    // 128-byte-sized floating-point number
+    long double float128 = 1.0;
+
+    // 'complex'
+    // in this case:
+    // complex32 = 'short complex'
+    // complex64 = 'complex'
+    // complex128 = 'long complex'
+    complex number = 1 + 4j;
+
+    // bstr (byte-string)
+    // A one-sized bstr is treated as a byte but still an instance of bstr
+    bstr bytestring = b'this is a bytestring'; // only can be build with ascii chars
+    bstr bytestring = b'''
+                this is a multiline
+                bytestring from
+                zephyrus-lang
+    '''; // multiline is also allowed
+
+    // str (string)
+    // A one-sized str is treated as a wide-char but still an instance of bstr
+    str string = 'this is a bytestring';
+    str string = '''
+                this is a multiline
+                bytestring from
+                zephyrus-lang
+    '''; // multiline is also allowed
+
+            </code></pre>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <h2>3. Type Definitions (Struct, Union, and Enum)</h2>
+            <pre class="code-box"><code>
+    // Structs, unions, and enums allow you to define custom data types in Zephyrus.
+
+    // Structs (similar syntax to C)
+    struct Human {
+        str fullname;
+        unsigned byte age;
+        str address;
+    } Humans[10];
+
+    // Typedef for Structs (with optional alias)
+    typedef struct /* optional alias */ {
+        str fullname;
+        unsigned byte age;
+        str address;
+    } Human;
+
+    // Initializing struct instances
+    Human human = <'Zephyrus', 20, 'over there'>;
+    // Alternatively, using named parameters
+    Human human = <.fullname='Zephyrus', .age=20, .address='over there'>;
+
+    // Struct fields with default values
+    typedef struct /* optional alias */ {
+        str fullname;
+        unsigned byte age: default 20;
+        str address;
+    } Human;
+    // Initializing struct instance with default value
+    Human human = <.fullname='Zephyrus', .address='over there'>; // age is set to 20
+
+    // Unions (similar syntax to C)
+    union Number {
+        int integer;
+        float floating;
+    };
+
+    // Initializing union instances
+    Number num1 = 10; // Assigning integer value
+    Number num2 = 3.14; // Assigning floating-point value
+
+    // Enums (similar syntax to C)
+    enum Color {
+        RED,
+        GREEN,
+        BLUE
+    };
+
+    // Initializing enum instances
+    Color color = Color.GREEN;
+
+    // If enumeration is decorated with '@enumerations.global'
+    @enumeration.global
+    enum Color {
+        RED,
+        GREEN,
+        BLUE
+    };
+    // Initializing enum instances
+    Color color = GREEN;
+            </code></pre>
+        </div>
+        <div class="col-md-6">
+            <h2>4. Callables</h2>
+            <pre class="code-box"><code>
+    // Module level callable
+    <.visibility> <.rtype> <.callable name>(<.argtype> <.argument name>, ...) {
+        // Function context
+    }
+    // Class level callable
+    <.visibility> <.static (class method)?> <.final?> <.rtype> <.callable name>(self /* if is not static otherwise 'cls' */, <.argtype> <.argument name>, ...) {
+        // Function context
+    }
+            </code></pre>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <h2>5. Objects</h2>
+            <pre class="code-box"><code>
+    <.visibility> <.class kind (class, abstract class, interface, protocol)> <.class name> <.extends? ...(classes, ...)> <.implements? ...(interfaces, ...)>{
+        // Class fields, attributes and methods
+    }
+            </code></pre>
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>
